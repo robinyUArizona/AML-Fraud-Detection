@@ -23,14 +23,16 @@ class DataIngestion:
         logging.info("Entered the 'data ingestion' method or component")
         try:
             df = pd.read_csv("notebook\data\HI-Small_Trans.csv")
+            # Take 50,000 sampples of the data
+            df_sample = df.sample(n=50000, random_state=6)
             logging.info("Read the dataset as DataFrame")
             # create directory for raw data
             os.makedirs(os.path.dirname(os.path.join(self.ingestion_config.raw_data_path)), exist_ok=True)
             # save raw data
-            df.to_csv(self.ingestion_config.raw_data_path, index=False, header=True)
+            df_sample.to_csv(self.ingestion_config.raw_data_path, index=False, header=True)
 
             logging.info("Train Test split initiated")
-            train_set, test_set = train_test_split(df, test_size=0.2, random_state=42)
+            train_set, test_set = train_test_split(df_sample, test_size=0.2, random_state=42)
             train_set.to_csv(self.ingestion_config.train_data_path, index=False, header=True)
             test_set.to_csv(self.ingestion_config.test_data_path, index=False, header=True)
             logging.info("Ingestion of the data completed")
