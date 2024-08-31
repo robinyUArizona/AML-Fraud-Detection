@@ -133,6 +133,7 @@ venv.bak/
 
 # Files and Folders
 **/data/
+/artifacts
 
 
 # Spyder project settings
