@@ -6,4 +6,5 @@ ipykernel
 scikit-learn
 xgboost
 imbalanced-learn
+dill
 # -e .
