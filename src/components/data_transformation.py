@@ -60,7 +60,7 @@ class DataTransformation:
             logging.info(f"Train Dataframe Head : \n{train_df.head().to_string()}")
             logging.info(f"Test Dataframe Head : \n{test_df.head().to_string()}")
 
-            # Dividing into Independent features and Dependent feature
+            # Get Independent features (drop unwanted columns) and Dependent feature
             target_column_name = "Is Laundering"
             drop_columns = [target_column_name, "Timestamp", "Amount Paid", "Payment Currency"]
             input_features_train_df = train_df.drop(columns=drop_columns, axis=1)
