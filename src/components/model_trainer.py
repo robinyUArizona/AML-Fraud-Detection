@@ -39,7 +39,7 @@ class ModelTrainer:
             models = {
                 "Random Forest": RandomForestClassifier(),
                 "AdaBoost": AdaBoostClassifier(),
-                "Gradient Boosting": GradientBoostingClassifier(),
+                # "Gradient Boosting": GradientBoostingClassifier(),
                 "XGBoost": XGBClassifier()
             }
 
@@ -90,8 +90,8 @@ class ModelTrainer:
 
             # Finding the best model and its score
             best_model_name, best_score = max(models_recall_score.items(), key=lambda item: item[1])
-            logging.info(f"Best Model: {best_model_name}, Recall score: {best_score}")
-            print(f"Best Model: {best_model_name}, Score: {best_score}")
+            logging.info(f"Best Model: {best_model_name} with Recall score: {best_score}")
+            print(f"Best Model: {best_model_name} with Recall score: {best_score}")
             
             best_model = models[best_model_name]
 
@@ -103,11 +103,11 @@ class ModelTrainer:
             # Prediction on Test data
             predicted = best_model.predict(X_test)
             from sklearn.metrics import precision_score, recall_score, f1_score
-            precision_score = precision_score(y_test, predicted, average='weighted')
+            recall_Score = recall_score(y_test, predicted, average='weighted')
 
             logging.info(f"Model Training completed")
-            logging.info(f"Final precision score for the {best_model}: {precision_score}")
-            print(f"Final precision score for the best model i.e. {best_model}: {precision_score}")
+            logging.info(f"Final Recall score for the {best_model}: {recall_Score}")
+            print(f"Final Recall score for the best model i.e. {best_model}: {recall_Score}")
             return precision_score
 
         except Exception as e:

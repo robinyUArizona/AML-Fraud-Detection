@@ -1,0 +1,84 @@
+[ 2024-09-02 16:39:08,789] 23 root - INFO - Entered the 'data ingestion' method or component
+[ 2024-09-02 16:39:16,648] 28 root - INFO - Read the dataset as DataFrame
+[ 2024-09-02 16:39:16,879] 34 root - INFO - Train Test split initiated
+[ 2024-09-02 16:39:17,140] 38 root - INFO - Ingestion of the data completed
+[ 2024-09-02 16:39:17,439] 59 root - INFO - Read train and test data completed
+[ 2024-09-02 16:39:17,445] 60 root - INFO - Train Dataframe Head : 
+          Timestamp  From Bank    Account  To Bank  Account.1  Amount Received Receiving Currency   Amount Paid Payment Currency Payment Format  Is Laundering
+0  2022/09/02 11:26     353132  814282F31   255063  814282BC1          0.02664            Bitcoin       0.02664          Bitcoin        Bitcoin              0
+1  2022/09/02 04:29      29003  80B58DFD0   123390  80EC2ACA0      91604.31000          US Dollar   91604.31000        US Dollar            ACH              0
+2  2022/09/10 01:30     143430  810A32FA0   244192  811917200       2145.51000             Shekel    2145.51000           Shekel         Cheque              0
+3  2022/09/07 21:25      16678  806484950    17554  806AAFE90     108457.21000              Ruble  108457.21000            Ruble         Cheque              0
+4  2022/09/02 06:22        210  809181590    24779  80924A880       7577.02000    Canadian Dollar    7577.02000  Canadian Dollar    Credit Card              0
+[ 2024-09-02 16:39:17,448] 61 root - INFO - Test Dataframe Head : 
+          Timestamp  From Bank    Account  To Bank  Account.1  Amount Received Receiving Currency  Amount Paid Payment Currency Payment Format  Is Laundering
+0  2022/09/09 19:26      33727  80C66DAE0    33727  80C66DAE0         16515.55          US Dollar    349189.96     Mexican Peso            ACH              0
+1  2022/09/08 18:24      28694  8036FA390   122151  80BDB1470           169.14          US Dollar       169.14        US Dollar           Cash              0
+2  2022/09/05 16:06         70  1004286A8    13057  80189B650         19878.41               Euro     19878.41             Euro    Credit Card              0
+3  2022/09/06 15:53          9  8060A15C0        9  8060B3140          8390.38              Ruble      8390.38            Ruble           Cash              0
+4  2022/09/09 19:12       1853  801449850    17729  808FBDE10            98.92          US Dollar        98.92        US Dollar         Cheque              0
+[ 2024-09-02 16:39:17,453] 72 root - INFO - Obtaining proprocessing object
+[ 2024-09-02 16:39:17,453] 47 root - INFO - Preprocessed both numerical and categorical columns
+[ 2024-09-02 16:39:17,453] 75 root - INFO - Applying preprocessing object on training and testing datasets.
+[ 2024-09-02 16:39:18,142] 87 root - INFO - Saved data preprocessing object
+[ 2024-09-02 16:39:18,149] 27 root - INFO - Get Independent features and Dependent feature from Train and Test datasets
+[ 2024-09-02 16:39:18,150] 35 root - INFO - Imbalance dataset - upsampling the train data
+[ 2024-09-02 16:39:18,155] 46 root - INFO - Before SMOTE: Counter({0.0: 39959, 1.0: 41})
+[ 2024-09-02 16:39:18,178] 48 root - INFO - After SMOTE: Counter({0.0: 39959, 1.0: 39959})
+[ 2024-09-02 16:39:18,178] 49 root - INFO - Upsampling the minority class data completed
+[ 2024-09-02 16:39:18,181] 77 root - INFO - Grid Search started for RandomForestClassifier()
+[ 2024-09-02 16:43:07,315] 80 root - INFO - Grid Search completed for RandomForestClassifier()
+[ 2024-09-02 16:43:07,316] 83 root - INFO - Best parameters: {'n_estimators': 200} for RandomForestClassifier()
+[ 2024-09-02 16:44:01,521] 77 root - INFO - Grid Search started for AdaBoostClassifier()
+[ 2024-09-02 16:50:24,646] 80 root - INFO - Grid Search completed for AdaBoostClassifier()
+[ 2024-09-02 16:50:24,646] 83 root - INFO - Best parameters: {'learning_rate': 1.0, 'n_estimators': 200} for AdaBoostClassifier()
+[ 2024-09-02 16:50:52,701] 77 root - INFO - Grid Search started for XGBClassifier(base_score=None, booster=None, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=None,
+              colsample_bytree=None, device=None, early_stopping_rounds=None,
+              enable_categorical=False, eval_metric=None, feature_types=None,
+              gamma=None, grow_policy=None, importance_type=None,
+              interaction_constraints=None, learning_rate=None, max_bin=None,
+              max_cat_threshold=None, max_cat_to_onehot=None,
+              max_delta_step=None, max_depth=None, max_leaves=None,
+              min_child_weight=None, missing=nan, monotone_constraints=None,
+              multi_strategy=None, n_estimators=None, n_jobs=None,
+              num_parallel_tree=None, random_state=None, ...)
+[ 2024-09-02 16:51:04,232] 80 root - INFO - Grid Search completed for XGBClassifier(base_score=None, booster=None, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=None,
+              colsample_bytree=None, device=None, early_stopping_rounds=None,
+              enable_categorical=False, eval_metric=None, feature_types=None,
+              gamma=None, grow_policy=None, importance_type=None,
+              interaction_constraints=None, learning_rate=None, max_bin=None,
+              max_cat_threshold=None, max_cat_to_onehot=None,
+              max_delta_step=None, max_depth=None, max_leaves=None,
+              min_child_weight=None, missing=nan, monotone_constraints=None,
+              multi_strategy=None, n_estimators=None, n_jobs=None,
+              num_parallel_tree=None, random_state=None, ...)
+[ 2024-09-02 16:51:04,234] 83 root - INFO - Best parameters: {'learning_rate': 0.1, 'n_estimators': 200} for XGBClassifier(base_score=None, booster=None, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=None,
+              colsample_bytree=None, device=None, early_stopping_rounds=None,
+              enable_categorical=False, eval_metric=None, feature_types=None,
+              gamma=None, grow_policy=None, importance_type=None,
+              interaction_constraints=None, learning_rate=None, max_bin=None,
+              max_cat_threshold=None, max_cat_to_onehot=None,
+              max_delta_step=None, max_depth=None, max_leaves=None,
+              min_child_weight=None, missing=nan, monotone_constraints=None,
+              multi_strategy=None, n_estimators=None, n_jobs=None,
+              num_parallel_tree=None, random_state=None, ...)
+[ 2024-09-02 16:51:05,101] 113 root - INFO - 
+ Metrics calculation on Train Data: 
+{'Random Forest': [{'Precision': 1.0, 'Recall': 1.0, 'F1 score': 1.0, 'Confusion Matrix': array([[39959,     0],
+       [    0, 39959]], dtype=int64)}], 'AdaBoost': [{'Precision': 0.9804068004927996, 'Recall': 0.9799419404890012, 'F1 score': 0.9799370870784296, 'Confusion Matrix': array([[38536,  1423],
+       [  180, 39779]], dtype=int64)}], 'XGBoost': [{'Precision': 0.9991128300329145, 'Recall': 0.9991115893791136, 'F1 score': 0.9991115888270287, 'Confusion Matrix': array([[39892,    67],
+       [    4, 39955]], dtype=int64)}]}
+[ 2024-09-02 16:51:05,102] 114 root - INFO - 
+ Metrics calculation on Test Data: 
+{'Random Forest': [{'Precision': 0.9973993488278902, 'Recall': 0.9969, 'F1 score': 0.9971496118984428, 'Confusion Matrix': array([[9969,   18],
+       [  13,    0]], dtype=int64)}], 'AdaBoost': [{'Precision': 0.9984956890117084, 'Recall': 0.9092, 'F1 score': 0.9511785974705528, 'Confusion Matrix': array([[9081,  906],
+       [   2,   11]], dtype=int64)}], 'XGBoost': [{'Precision': 0.9976163333333334, 'Recall': 0.9891, 'F1 score': 0.9932721754906372, 'Confusion Matrix': array([[9889,   98],
+       [  11,    2]], dtype=int64)}]}
+[ 2024-09-02 16:51:05,102] 89 root - INFO - The models and their corresponding Recall score: 
+{'Random Forest': 0.9969, 'AdaBoost': 0.9092, 'XGBoost': 0.9891}
+[ 2024-09-02 16:51:05,102] 93 root - INFO - Best Model: Random Forest with Recall score: 0.9969
+[ 2024-09-02 16:51:05,374] 108 root - INFO - Model Training completed
+[ 2024-09-02 16:51:05,375] 109 root - INFO - Final Recall score for the RandomForestClassifier(n_estimators=200): 0.9969
