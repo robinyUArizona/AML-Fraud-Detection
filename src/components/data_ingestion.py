@@ -45,18 +45,18 @@ class DataIngestion:
             raise CustomerException(e, sys)
 
 
-if __name__ == "__main__":
-    obj = DataIngestion()
-    train_data, test_data = obj.initiate_data_ingestion()
+# if __name__ == "__main__":
+#     obj = DataIngestion()
+#     train_data, test_data = obj.initiate_data_ingestion()
 
-    from src.components.data_transformation import DataTransformation
-    from src.components.data_transformation import DataTransformationConfig
-    data_transformation =  DataTransformation()
-    train_arr, test_arr = data_transformation.initiate_data_transformation(train_data, test_data)
+#     from src.components.data_transformation import DataTransformation
+#     from src.components.data_transformation import DataTransformationConfig
+#     data_transformation =  DataTransformation()
+#     train_arr, test_arr = data_transformation.initiate_data_transformation(train_data, test_data)
 
-    from src.components.model_trainer import ModelTrainer
-    from src.components.model_trainer import ModelTrainerConfig
-    model_trainer = ModelTrainer()
-    print(model_trainer.initiate_model_trainer(train_arr, test_arr))
+#     from src.components.model_trainer import ModelTrainer
+#     from src.components.model_trainer import ModelTrainerConfig
+#     model_trainer = ModelTrainer()
+#     print(model_trainer.initiate_model_trainer(train_arr, test_arr))
 
 

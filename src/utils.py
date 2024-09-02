@@ -10,6 +10,8 @@ from src.exception import CustomerException
 from collections import Counter
 from imblearn.over_sampling import SMOTE
 
+from sklearn.model_selection import GridSearchCV
+
 from sklearn.model_selection import cross_val_score, StratifiedKFold, KFold
 from sklearn.metrics import make_scorer, precision_score, recall_score, f1_score
 from sklearn.metrics import classification_report, confusion_matrix, auc, roc_curve
@@ -44,7 +46,7 @@ def upsampling_train_data(X, y):
         logging.info(f"Before SMOTE: {Counter(y)}")
         X_sm, y_sm = sm.fit_resample(X, y)   
         logging.info(f"After SMOTE: {Counter(y_sm)}")
-        logging.info(f"\n====== Upsampling the minority class data completed ======") 
+        logging.info(f"Upsampling the minority class data completed") 
         return X_sm, y_sm
     except Exception as e:
         logging.info(f"Exception occured during upsampling the minority class")
@@ -63,20 +65,31 @@ def model_metrics(y_test, y_pred):
         logging.info(f"Exception occured during metrics calculation")
 
 
-def evaluate_models(X_train, y_train, X_test, y_test, models):
+def evaluate_models(X_train, y_train, X_test, y_test, models, params):
     try:
         train_report = {}
         test_report = {}
         for i in range(len(models)):
             model = list(models.values())[i]
-            # Train model
+            param = params[list(models.keys())[i]]
+
+            # Grid Search
+            logging.info(f"Grid Search started for {model}")
+            gs = GridSearchCV(model, param, cv=3)
+            gs.fit(X_train, y_train)
+            logging.info(f"Grid Search completed for {model}")
+
+            # Setting model with best hyperparameters
+            logging.info(f"Best parameters: {gs.best_params_} for {model}")
+            model.set_params(**gs.best_params_)
             model.fit(X_train, y_train)
+            
             # Predict on Train data
             y_train_pred = model.predict(X_train)
             # Predict Test data
             y_test_pred = model.predict(X_test)
 
-            # Get evluation metrics for train and test data
+            # Get evaluation metrics for train and test data
             precision_train, recall_train, f1_train, cm_train = model_metrics(y_train, y_train_pred)
             train_model_score = []
             train_model_score.append({
@@ -97,6 +110,8 @@ def evaluate_models(X_train, y_train, X_test, y_test, models):
             })
             test_report[list(models.keys())[i]] = test_model_score
 
+        logging.info(f"\n Metrics calculation on Train Data: \n{train_report}")
+        logging.info(f"\n Metrics calculation on Test Data: \n{test_report}")
         return train_report, test_report
 
     except Exception as e:

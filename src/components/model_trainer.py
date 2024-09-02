@@ -43,12 +43,46 @@ class ModelTrainer:
                 "XGBoost": XGBClassifier()
             }
 
+            params = {
+                "Random Forest": {
+                    'n_estimators': [50, 100, 200],
+                    # 'criterion': ['gini', 'entropy'],
+                    # 'max_depth': [None, 10, 20, 30],
+                    # 'min_samples_split': [2, 5, 10],
+                    # 'min_samples_leaf': [1, 2, 4],
+                    # 'max_features': ['sqrt', 'log2', None]
+                },
+                "AdaBoost": {
+                    'n_estimators': [50, 100, 200],
+                    'learning_rate': [0.01, 0.1, 0.5, 1.0],
+                    # 'algorithm': ['SAMME', 'SAMME.R']
+                },
+                # "Gradient Boosting": {
+                #     # 'n_estimators': [50, 100, 200],
+                #     # 'learning_rate': [0.01, 0.1, 0.05, 0.001],
+                #     # 'subsample': [0.6, 0.7, 0.8, 0.9],
+                #     # 'max_depth': [3, 5, 7, 9],
+                #     # 'min_samples_split': [2, 5, 10],
+                #     # 'min_samples_leaf': [1, 2, 4]
+                # },
+                "XGBoost": {
+                    'n_estimators': [50, 100, 200],
+                    'learning_rate': [0.01, 0.1, 0.05, 0.001],
+                    # 'max_depth': [3, 5, 7, 9],
+                    # 'min_child_weight': [1, 3, 5],
+                    # 'gamma': [0, 0.1, 0.2],
+                    # 'subsample': [0.6, 0.7, 0.8, 0.9],
+                    # 'colsample_bytree': [0.6, 0.7, 0.8, 0.9]
+                }
+            }
+
             model_report:dict = evaluate_models(
                 X_train=X_train_smp, 
                 y_train=y_train_smp, 
                 X_test=X_test,
                 y_test=y_test,
-                models=models)
+                models=models,
+                params=params)
             
             # Models and its corresponding Recall score from dict
             models_recall_score = {model: recall_result[0]["Recall"] for model, recall_result in model_report[1].items()}
@@ -72,6 +106,8 @@ class ModelTrainer:
             precision_score = precision_score(y_test, predicted, average='weighted')
 
             logging.info(f"Model Training completed")
+            logging.info(f"Final precision score for the {best_model}: {precision_score}")
+            print(f"Final precision score for the best model i.e. {best_model}: {precision_score}")
             return precision_score
 
         except Exception as e:
