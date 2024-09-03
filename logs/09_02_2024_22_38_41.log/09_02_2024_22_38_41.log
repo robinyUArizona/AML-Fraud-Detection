@@ -1,0 +1,20 @@
+[ 2024-09-02 22:38:43,964] 23 root - INFO - Entered the 'data ingestion' method or component
+[ 2024-09-02 22:38:50,348] 28 root - INFO - Read the dataset as DataFrame
+[ 2024-09-02 22:38:50,579] 34 root - INFO - Train Test split initiated
+[ 2024-09-02 22:38:50,827] 38 root - INFO - Ingestion of the data completed
+[ 2024-09-02 22:38:51,125] 59 root - INFO - Reading train and test data completed
+[ 2024-09-02 22:38:51,127] 63 root - INFO - Train and Test dataframe columns name renamed
+[ 2024-09-02 22:38:51,132] 65 root - INFO - Train Dataframe Head : 
+          timestamp  from_bank    account  to_bank  account_1  amount_received receiving_currency   amount_paid payment_currency payment_format  is_laundering
+0  2022/09/02 11:26     353132  814282F31   255063  814282BC1          0.02664            Bitcoin       0.02664          Bitcoin        Bitcoin              0
+1  2022/09/02 04:29      29003  80B58DFD0   123390  80EC2ACA0      91604.31000          US Dollar   91604.31000        US Dollar            ACH              0
+2  2022/09/10 01:30     143430  810A32FA0   244192  811917200       2145.51000             Shekel    2145.51000           Shekel         Cheque              0
+3  2022/09/07 21:25      16678  806484950    17554  806AAFE90     108457.21000              Ruble  108457.21000            Ruble         Cheque              0
+4  2022/09/02 06:22        210  809181590    24779  80924A880       7577.02000    Canadian Dollar    7577.02000  Canadian Dollar    Credit Card              0
+[ 2024-09-02 22:38:51,135] 66 root - INFO - Test Dataframe Head : 
+          Timestamp  From Bank    Account  To Bank  Account.1  Amount Received Receiving Currency  Amount Paid Payment Currency Payment Format  Is Laundering
+0  2022/09/09 19:26      33727  80C66DAE0    33727  80C66DAE0         16515.55          US Dollar    349189.96     Mexican Peso            ACH              0
+1  2022/09/08 18:24      28694  8036FA390   122151  80BDB1470           169.14          US Dollar       169.14        US Dollar           Cash              0
+2  2022/09/05 16:06         70  1004286A8    13057  80189B650         19878.41               Euro     19878.41             Euro    Credit Card              0
+3  2022/09/06 15:53          9  8060A15C0        9  8060B3140          8390.38              Ruble      8390.38            Ruble           Cash              0
+4  2022/09/09 19:12       1853  801449850    17729  808FBDE10            98.92          US Dollar        98.92        US Dollar         Cheque              0

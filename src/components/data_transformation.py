@@ -29,8 +29,8 @@ class DataTransformation:
         This function is responsible for data transformation
         """
         try:
-            numerical_columns = ['From Bank', 'To Bank', 'Amount Received']
-            categorical_columns = ['Account', 'Account.1', 'Receiving Currency', 'Payment Format']
+            numerical_columns = ['from_bank', 'to_bank', 'amount_received']
+            categorical_columns = ['account', 'account_1', 'receiving_currency', 'payment_format']
 
             # Preprocessing for numerical features:
             num_transformer = make_pipeline(SimpleImputer(strategy='median'),
@@ -56,13 +56,18 @@ class DataTransformation:
         try:
             train_df = pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
-            logging.info(f"Read train and test data completed")
+            logging.info(f"Reading train and test data completed")
+
+            train_df.columns = train_df.columns.str.lower().str.replace(' ', '_').str.replace('.', '_')
+            test_df.columns = test_df.columns.str.lower().str.replace(' ', '_').str.replace('.', '_')
+            logging.info("Train and Test dataframe columns name renamed")
+
             logging.info(f"Train Dataframe Head : \n{train_df.head().to_string()}")
             logging.info(f"Test Dataframe Head : \n{test_df.head().to_string()}")
 
             # Get Independent features (drop unwanted columns) and Dependent feature
-            target_column_name = "Is Laundering"
-            drop_columns = [target_column_name, "Timestamp", "Amount Paid", "Payment Currency"]
+            target_column_name = "is_laundering"
+            drop_columns = [target_column_name, "timestamp", "amount_paid", "payment_currency"]
             input_features_train_df = train_df.drop(columns=drop_columns, axis=1)
             target_fetaure_train_df = train_df[target_column_name]
 
