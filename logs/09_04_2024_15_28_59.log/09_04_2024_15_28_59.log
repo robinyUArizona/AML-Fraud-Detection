@@ -1,0 +1,22 @@
+[ 2024-09-04 15:29:00,768] 97 werkzeug - WARNING -  * Debugger is active!
+[ 2024-09-04 15:29:00,782] 97 werkzeug - INFO -  * Debugger PIN: 330-176-674
+[ 2024-09-04 15:30:55,138] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:30:55] "GET / HTTP/1.1" 200 -
+[ 2024-09-04 15:30:55,436] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:30:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[ 2024-09-04 15:31:10,087] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:31:10] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:32:07,737] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:32:07] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:34:01,071] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:34:01] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:34:13,548] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:34:13] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:34:29,174] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:34:29] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:35:50,481] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:35:50] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:38:34,921] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:38:34] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:39:19,661] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:39:19] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:39:20,692] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:39:20] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:39:27,241] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:39:27] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:39:28,400] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:39:28] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:39:30,608] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:39:30] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:39:32,693] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:39:32] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:39:57,799] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:39:57] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:40:08,755] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:40:08] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:40:44,099] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:40:44] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:41:57,267] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:41:57] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:47:07,034] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\yrobi\\Desktop\\Robin World\\Data Science - Machine Learning Prep\\01 - MLOps\\AML-Fraud-Detection\\src\\pipeline\\prediction_pipeline.py', reloading

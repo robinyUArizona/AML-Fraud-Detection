@@ -24,14 +24,11 @@ class DataTransformation:
     def __init__(self):
         self.data_transformation_config = DataTransformationConfig()
 
-    def get_data_transformer_object(self):
+    def get_data_transformer_object(self, numerical_columns, categorical_columns):
         """
         This function is responsible for data transformation
         """
         try:
-            numerical_columns = ['from_bank', 'to_bank', 'amount_received']
-            categorical_columns = ['account', 'account_1', 'receiving_currency', 'payment_format']
-
             # Preprocessing for numerical features:
             num_transformer = make_pipeline(SimpleImputer(strategy='median'),
                                             RobustScaler())
@@ -74,8 +71,14 @@ class DataTransformation:
             input_features_test_df = test_df.drop(columns=drop_columns, axis=1)
             target_fetaure_test_df = test_df[target_column_name]
 
+            # Get column names of input features which need to be transformed
+            numerical_features = input_features_train_df.select_dtypes(include=np.number).columns.tolist()
+            logging.info(f"Columns name of numerical features: {numerical_features}")
+            categorical_features = input_features_train_df.select_dtypes(include=object).columns.tolist()
+            logging.info(f"Columns name of categorical features: {categorical_features}")
+
             logging.info(f"Obtaining proprocessing object")
-            preprocessing_obj = self.get_data_transformer_object()
+            preprocessing_obj = self.get_data_transformer_object(numerical_features, categorical_features)
 
             logging.info(f"Applying preprocessing object on training and testing datasets.")
             input_feature_train_arr = preprocessing_obj.fit_transform(input_features_train_df)

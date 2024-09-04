@@ -1,0 +1,15 @@
+[ 2024-09-04 15:47:09,243] 97 werkzeug - WARNING -  * Debugger is active!
+[ 2024-09-04 15:47:09,255] 97 werkzeug - INFO -  * Debugger PIN: 330-176-674
+[ 2024-09-04 15:52:44,853] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:52:44] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:54:03,666] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:54:03] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:56:05,418] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:56:05] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 15:57:04,868] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:57:04] "[35m[1mPOST /predictdata HTTP/1.1[0m" 500 -
+[ 2024-09-04 15:57:04,901] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:57:04] "GET /predictdata?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[ 2024-09-04 15:57:04,911] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:57:04] "GET /predictdata?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[ 2024-09-04 15:57:04,959] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:57:04] "GET /predictdata?__debugger__=yes&cmd=resource&f=console.png&s=dU0Khjs2xj1bMFIzbUem HTTP/1.1" 200 -
+[ 2024-09-04 15:57:05,003] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:57:05] "GET /predictdata?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[ 2024-09-04 15:57:14,201] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:57:14] "[35m[1mPOST /predictdata HTTP/1.1[0m" 500 -
+[ 2024-09-04 15:57:14,218] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:57:14] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[ 2024-09-04 15:57:14,221] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:57:14] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[ 2024-09-04 15:57:14,245] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:57:14] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=console.png&s=dU0Khjs2xj1bMFIzbUem HTTP/1.1[0m" 304 -
+[ 2024-09-04 15:57:14,283] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 15:57:14] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -

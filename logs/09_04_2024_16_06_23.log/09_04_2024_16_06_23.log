@@ -1,0 +1,10 @@
+[ 2024-09-04 16:06:24,065] 97 werkzeug - WARNING -  * Debugger is active!
+[ 2024-09-04 16:06:24,079] 97 werkzeug - INFO -  * Debugger PIN: 330-176-674
+[ 2024-09-04 16:06:26,444] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 16:06:26] "GET / HTTP/1.1" 200 -
+[ 2024-09-04 16:06:29,775] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 16:06:29] "GET /predictdata HTTP/1.1" 200 -
+[ 2024-09-04 16:07:12,620] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 16:07:12] "[35m[1mPOST /predictdata HTTP/1.1[0m" 500 -
+[ 2024-09-04 16:07:12,643] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 16:07:12] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[ 2024-09-04 16:07:12,647] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 16:07:12] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[ 2024-09-04 16:07:12,696] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 16:07:12] "GET /predictdata?__debugger__=yes&cmd=resource&f=console.png&s=uNUsd7s8OnJaObesVoc3 HTTP/1.1" 200 -
+[ 2024-09-04 16:07:12,758] 97 werkzeug - INFO - 127.0.0.1 - - [04/Sep/2024 16:07:12] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[ 2024-09-04 16:07:35,093] 97 werkzeug - INFO -  * Detected change in 'C:\\Users\\yrobi\\Desktop\\Robin World\\Data Science - Machine Learning Prep\\01 - MLOps\\AML-Fraud-Detection\\src\\pipeline\\prediction_pipeline.py', reloading
