@@ -8,4 +8,7 @@ xgboost
 imbalanced-learn
 dill
 Flask
+beautifulsoup4
+lxml
+streamlit
 # -e .
