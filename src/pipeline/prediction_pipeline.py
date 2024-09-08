@@ -23,6 +23,18 @@ class PredictionPipeline:
         except Exception as e:
             raise CustomerException(e, sys)
         
+    def predict_proba(self, features):
+        try: 
+            model_path = os.path.join("artifacts", "model.pkl")
+            preprocessor_path = os.path.join("artifacts", "preprocessor.pkl")
+            model = load_object(file_path=model_path)
+            preprocessor = load_object(file_path=preprocessor_path)
+            data_scaled = preprocessor.transform(features)
+            predictions_prob = model.predict_proba(data_scaled)
+            return predictions_prob
+        except Exception as e:
+            raise CustomerException(e, sys)
+        
 
 # ['from_bank', 'to_bank', 'amount_received']
 # ['account', 'account_1', 'receiving_currency', 'payment_format']

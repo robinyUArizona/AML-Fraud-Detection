@@ -1,8 +1,9 @@
-
 import streamlit as st
 import dill
 from src.pipeline.prediction_pipeline import CustomData, PredictionPipeline
 from src.exception import CustomerException
+import pandas as pd
+
 
 st.write(
 """
@@ -42,12 +43,21 @@ st.write("----------")
 # Call best model
 predict_pipeline = PredictionPipeline()
 # Apply best model to make prediction
-result = predict_pipeline.predict(df)
+prediction = predict_pipeline.predict(df)
+prediction_proba = predict_pipeline.predict_proba(df)
+
+st.subheader('Fraud detector class labels')
+class_labels_df = pd.DataFrame({"Not Fraud" : [0], "Fraud" : [1]})
+class_labels_df.index = ["Class labels"]
+st.write(class_labels_df.T)
 
 st.header("Prediction of a given transaction")
-st.write(result)
+st.write(prediction)
 st.write("-------")
 
+st.header("Prediction probabilities of a given transaction")
+st.write(prediction_proba)
+st.write("-------")
 
 # Explaining the model's predictions using SHAP values
 # https://github.com/slundberg/shap
