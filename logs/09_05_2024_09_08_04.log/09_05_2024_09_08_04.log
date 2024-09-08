@@ -1,6 +1,0 @@
-[ 2024-09-05 09:08:05,783] 97 werkzeug - WARNING -  * Debugger is active!
-[ 2024-09-05 09:08:05,820] 97 werkzeug - INFO -  * Debugger PIN: 330-176-674
-[ 2024-09-05 09:08:10,030] 97 werkzeug - INFO - 127.0.0.1 - - [05/Sep/2024 09:08:10] "GET / HTTP/1.1" 200 -
-[ 2024-09-05 09:08:15,812] 97 werkzeug - INFO - 127.0.0.1 - - [05/Sep/2024 09:08:15] "GET /predictdata HTTP/1.1" 200 -
-[ 2024-09-05 09:08:18,018] 97 werkzeug - INFO - 127.0.0.1 - - [05/Sep/2024 09:08:18] "GET /predictdata HTTP/1.1" 200 -
-[ 2024-09-05 09:08:31,916] 97 werkzeug - INFO - 127.0.0.1 - - [05/Sep/2024 09:08:31] "POST /predictdata HTTP/1.1" 200 -
