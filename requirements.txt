@@ -11,4 +11,5 @@ Flask
 beautifulsoup4
 lxml
 streamlit
+mlflow==2.16.0
 # -e .

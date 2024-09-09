@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/yrobi/Desktop/Robin%20World/Data%20Science%20-%20Machine%20Learning%20Prep/01%20-%20MLOps/AML-Fraud-Detection/mlruns/0/7e969d0bc2574880b153141aba521bcd/artifacts
+end_time: 1725886913314
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7e969d0bc2574880b153141aba521bcd
+run_name: persistent-sloth-46
+run_uuid: 7e969d0bc2574880b153141aba521bcd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1725886913145
+status: 4
+tags: []
+user_id: yrobi
