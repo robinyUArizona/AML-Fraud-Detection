@@ -172,14 +172,14 @@ open up your local host and port
 
 5. Create EC2 (Ubuntu): Virtual machine in the AWS cloud
 	- **connect** to EC2 instance
-		#Description: About the deployment
+		- Description: About the deployment
 		1. Build docker image of the source code
 		2. Push your docker image to ECR
 		3. Launch Your EC2 
 		4. Pull Your image from ECR in EC2
 
 	- Lauch your docker image in EC2
-			Docker setup in EC2
+		- Docker setup in EC2
 		```bash
 		# optional
 		sudo apt-get update -y
