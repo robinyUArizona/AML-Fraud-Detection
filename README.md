@@ -13,7 +13,7 @@ This can be used in real life by finanicial corporation so that they can improve
 2. Deep Learning: Custom ANN with sigmoid activation Funtion
 
 ### Solution Proposed
-1. Download the data from Kaggle \h
+1. Download the data from Kaggle
 2. Perform EDA and feature engineering to select the desirable features
 3. Fit the ML classification algorithm and find out which one performs better
 4. Select top few and tune hyperparameters
@@ -22,22 +22,51 @@ This can be used in real life by finanicial corporation so that they can improve
 
 ### Project setup
 - Setup the GitHub repository (creating repo and cloning repo locally)
-- Requirements
-- Template (Deployable code)
+	create a new repository on GitHub or create a new directory, and initialize it
+	```
+	echo "# projectname" >> README.md or touch README.md
+	git init
+	git add README.md
+	git commit -m "first commit"
+	git branch -M main
+	git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY-NAME.git
+	git push -u origin main
+	```
+- Template (Deployable code) using `template.py`
 	``` 
-	- amlfrauddetector
+	- aml_fraud_detector
 		- components
+			- data_ingestion.py
+			- data_validation.py
+			- data_transformation.py
+			- model_trainer.py
+			- model_evaluation.py
+			- model_pusher.py
 		- configuration
 		- constant
 		- entity
+			- config_entity.py
+			- artifact_entity.py
 		- logger
 		- pipeline
+			- training_pipeline.py
+			- prediction_pipeline.py
 		- utils
-		
-
-
-
+			- main_utils.py
+	
 	```
+- Requirements
+	```bash
+	conda create -p venv python=3.8 -y
+	```
+	```bash
+	conda activate venv
+	```
+	```bash
+	pip install -r requirements.txt
+	```
+
+
 
 ### Workflows
 
@@ -116,9 +145,8 @@ open up you local host and port
 
 
 ```bash
-Author: Bappy Ahmed
+Author: Robins Yadav
 Data Scientist
-Email: entbappy73@gmail.com
 
 ```
 
