@@ -120,6 +120,7 @@ This can be used in real life by finanicial corporation so that they can improve
 
 ```bash
 python app.py
+or
 streamlit run app_streamlit.py
 ```
 ```bash
@@ -129,12 +130,30 @@ open up you local host and port
 
 ## Deployment
 ### Docker
+Build an Image from a Dockerfile
 ```bash
 docker build -t aml-streamlit-app .
-docker run -p 8501:8501 aml-streamlit-app
-or docker run -p 5000:5000 aml-streamlit-app
+```
+List local images
+```bash
+docker images
+```
+Delete an image
+```bash
+docker rmi <image_name>
+```
+Remove all unused images
+```bash
+docker image prune
+```
+Run a container with and publish a container’s port(s) to the host.
+```bash
+docker run -p 8501:8501 aml-streamlit-app 
+or
+docker run -p 5000:5000 app_name
 ```
 
+### AWS 
 
 
 
