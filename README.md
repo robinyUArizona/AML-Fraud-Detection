@@ -148,12 +148,86 @@ docker image prune
 ```
 Run a container with and publish a container’s port(s) to the host.
 ```bash
-docker run -p 8501:8501 aml-streamlit-app 
+docker run -p 8501:8501 aml-streamlit-app
 or
 docker run -p 5000:5000 app_name
 ```
+```bash
+open up your local host and port
+```
 
-### AWS 
+
+### AWS-CICD-Deployment-with-Github-Actions 
+1. .github\workflows
+	- `main.yaml`
+
+2. Login to AWS console
+
+3. Create IAM: `Identity Access Management` user for deployment
+	- `AmazonEC2ContainerRegistryFullAccess`
+	- `AmazonEC2FullAccess`
+
+4. Create ECR: `Elastic Container registry` to save your docker image in aws
+	- ECR Repo URI: 767397970670.dkr.ecr.us-east-1.amazonaws.com/aml_fraud_detector-container
+
+5. Create EC2 (Ubuntu): Virtual machine in the AWS cloud
+	- **connect** to EC2 instance
+		#Description: About the deployment
+		1. Build docker image of the source code
+		2. Push your docker image to ECR
+		3. Launch Your EC2 
+		4. Pull Your image from ECR in EC2
+
+	5. Lauch your docker image in EC2
+		Docker setup in EC2
+		```bash
+		# optional
+		sudo apt-get update -y
+		sudo apt-get upgrade
+
+		# Required
+		curl -fsSL https://get.docker.com -o get-docker.sh
+		sudo sh get-docker.sh
+		sudo usermod -aG docker ubuntu
+		newgrp docker
+		```
+
+6. Configure EC2 as self-hosted runner
+	- Now, Go to GitHub 
+```bash
+	setting > actions > runner > new self hosted runner > choose os (Linux) > then run command one by one
+```
+	
+7. Setup github secrets:
+```bash
+	setting > Secrets and variables > actions > New repository secret (in main screen)				
+```
+```
+    AWS_ACCESS_KEY_ID=
+
+    AWS_SECRET_ACCESS_KEY=
+
+    AWS_REGION = us-east-1
+
+    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
+
+    ECR_REPOSITORY_NAME = simple-app
+```
+
+
+	
+
+	
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -210,85 +284,6 @@ DVC
  - Its very lite weight for POC only
  - lite weight expriements tracker
  - It can perform Orchestration (Creating Pipelines)
-
-
-
-## AWS-CICD-Deployment-with-Github-Actions
-
-### 1. Login to AWS console.
-
-### 2. Create IAM user for deployment
-
-	#with specific access
-
-	1. EC2 access : It is virtual machine
-
-	2. ECR: Elastic Container registry to save your docker image in aws
-
-
-	#Description: About the deployment
-
-	1. Build docker image of the source code
-
-	2. Push your docker image to ECR
-
-	3. Launch Your EC2 
-
-	4. Pull Your image from ECR in EC2
-
-	5. Lauch your docker image in EC2
-
-	#Policy:
-
-	1. AmazonEC2ContainerRegistryFullAccess
-
-	2. AmazonEC2FullAccess
-
-	
-### 3. Create ECR repo to store/save docker image
-    - Save the URI: 566373416292.dkr.ecr.us-east-1.amazonaws.com/chicken
-
-	
-### 4. Create EC2 machine (Ubuntu) 
-
-### 5. Open EC2 and Install docker in EC2 Machine:
-	
-	
-	#optinal
-
-	sudo apt-get update -y
-
-	sudo apt-get upgrade
-	
-	#required
-
-	curl -fsSL https://get.docker.com -o get-docker.sh
-
-	sudo sh get-docker.sh
-
-	sudo usermod -aG docker ubuntu
-
-	newgrp docker
-	
-### 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
-
-
-## 7. Setup github secrets:
-
-    AWS_ACCESS_KEY_ID=
-
-    AWS_SECRET_ACCESS_KEY=
-
-    AWS_REGION = us-east-1
-
-    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
-
-    ECR_REPOSITORY_NAME = simple-app
-```
-
-
-
 
 
 
