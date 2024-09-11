@@ -2,17 +2,11 @@
 ##  Life cycle of Machine Learning Project:
 
             1. Understanding the Problem Statement
-
             2. Data Collection
-
             3. Data Checks to perform
-
             4. Exploratory Data Analysis
-
             5. Data Pre-Processing
-
             6. Model Evaluation and Training
-
             7. Choose Best Model
 
 
@@ -174,9 +168,9 @@ open up your local host and port
 	- **connect** to EC2 instance
 		- Description: About the deployment
 		1. Build docker image of the source code
-		2. Push your docker image to ECR
-		3. Launch Your EC2 
-		4. Pull Your image from ECR in EC2
+		2. Push  docker image to ECR
+		3. Launch EC2 
+		4. Pull  image from ECR in EC2
 
 	- Lauch your docker image in EC2
 		- Docker setup in EC2
@@ -202,18 +196,14 @@ open up your local host and port
 ```bash
 	setting > Secrets and variables > actions > New repository secret (in main screen)				
 ```
-Add `new repository secret`
-```
-    AWS_ACCESS_KEY_ID=
-
-    AWS_SECRET_ACCESS_KEY=
-
-    AWS_REGION = us-east-1
-
-    AWS_ECR_LOGIN_URI = 767397970670.dkr.ecr.us-east-1.amazonaws.com
-
-    ECR_REPOSITORY_NAME = aml_fraud_detector-container
-```
+	- Add `new repository secret`
+	```
+		AWS_ACCESS_KEY_ID=
+		AWS_SECRET_ACCESS_KEY=
+		AWS_REGION = us-east-1
+		AWS_ECR_LOGIN_URI = 767397970670.dkr.ecr.us-east-1.amazonaws.com
+		ECR_REPOSITORY_NAME = aml_fraud_detector-container
+	```
 
 
 	
