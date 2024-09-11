@@ -91,7 +91,14 @@ This can be used in real life by finanicial corporation so that they can improve
 		- Setup Network Access
 	- Downloaded data from kaggle and insert or upload the data to the MongoDB database (Atlas)
 
-###### Logger and Exceptions setup
+#### Logger and Exceptions setup
+- Create directories for logger and exception
+The logger and exception will be imported throughout the projects from here
+	- aml_fraud_detector
+		- logger
+			- __init__.py -> logger related codes
+		- exception
+			- __init__.py -> expception related codes
 
 
 
