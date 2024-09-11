@@ -16,11 +16,11 @@ def get_requirements(file_path:str)->List[str]:
     return requirements
 
 setup(
-    name="AML_Fraud_Detection",
-    version="0.0.1",
+    name="aml_fraud_detector",
+    version="0.0.0",
     author="Robins",
     author_email="robiny@arizona.edu",
-    packages=find_packages(),
-    install_requires=get_requirements("requirements.txt")
+    packages=find_packages()
+    # install_requires=get_requirements("requirements.txt")
 
 )
