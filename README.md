@@ -64,8 +64,13 @@ This can be used in real life by finanicial corporation so that they can improve
 	```
 	```bash
 	pip install -r requirements.txt
-	Note: -e . at the end in requirements.txt file -> This is for `setup.py file`
+	Note: -e . at the end in requirements.txt file -> This is for `setup.py` file
 	```
+- Database setup - MongoDB
+	- create project `aml_fraud_detector_mongoDB`
+		- create a cluster `cluster-aml-fraud-detector`
+		- Setup Network Access
+
 
 
 
