@@ -12,15 +12,32 @@ This can be used in real life by finanicial corporation so that they can improve
 1. Machine Learning: ML Classification Algorithms
 2. Deep Learning: Custom ANN with sigmoid activation Funtion
 
+### Solution Proposed
+1. Download the data from Kaggle \h
+2. Perform EDA and feature engineering to select the desirable features
+3. Fit the ML classification algorithm and find out which one performs better
+4. Select top few and tune hyperparameters
+5. Select the best model based on desired metrics
+
 
 ### Project setup
 - Setup the GitHub repository (creating repo and cloning repo locally)
-- Conda/Python environment
-- 
+- Requirements
+- Template (Deployable code)
+	``` 
+	- amlfrauddetector
+		- components
+		- configuration
+		- constant
+		- entity
+		- logger
+		- pipeline
+		- utils
+		
 
 
 
-
+	```
 
 ### Workflows
 
