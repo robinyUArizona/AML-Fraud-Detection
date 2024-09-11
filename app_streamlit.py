@@ -1,8 +1,8 @@
 import streamlit as st
 import dill
-from src.pipeline.prediction_pipeline import CustomData, PredictionPipeline
-from src.exception import CustomerException
-from src.logger import logging
+from aml_fraud_detector.pipeline.prediction_pipeline import CustomData, PredictionPipeline
+from aml_fraud_detector.exception import CustomerException
+from aml_fraud_detector.logger import logging
 import pandas as pd
 
 def main():

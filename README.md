@@ -92,8 +92,7 @@ This can be used in real life by finanicial corporation so that they can improve
 	- Downloaded data from kaggle and insert or upload the data to the MongoDB database (Atlas)
 
 #### Logger and Exceptions setup
-- Create directories for logger and exception
-The logger and exception will be imported throughout the projects from here
+- Create directories for logger and exception: The logger and exception will be imported from here throughout the projects
 	- aml_fraud_detector
 		- logger
 			- __init__.py -> logger related codes
@@ -117,23 +116,23 @@ The logger and exception will be imported throughout the projects from here
 
 
 
-
+## Finally run the following command
 
 ```bash
-# Finally run the following command
 python app.py
+streamlit run app_streamlit.py
 ```
-
-Now,
 ```bash
 open up you local host and port
 ```
 
 
+## Deployment
+### Docker
 ```bash
-Author: Robins Yadav
-Data Scientist
-
+docker build -t aml-streamlit-app .
+docker run -p 8501:8501 aml-streamlit-app
+or docker run -p 5000:5000 aml-streamlit-app
 ```
 
 
@@ -270,14 +269,13 @@ DVC
 ```
 
 
-```bash
-pip install -r requirements.txt
-```
+
+
+
+
 
 ```bash
-python app.py
-```
+Author: Robins Yadav
+Data Scientist
 
-```bash
-Now open up your local host 0.0.0.0:8080
 ```

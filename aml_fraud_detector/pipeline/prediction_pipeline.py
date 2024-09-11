@@ -5,7 +5,7 @@ import pandas as pd
 
 from aml_fraud_detector.exception import CustomerException
 from aml_fraud_detector.logger import logging
-from aml_fraud_detector.utils import load_object
+from aml_fraud_detector.utils.main_utils import load_object
 
 
 class PredictionPipeline:
