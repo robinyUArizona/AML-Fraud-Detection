@@ -21,7 +21,7 @@ This can be used in real life by finanicial corporation so that they can improve
 
 
 ### Project setup
-- Setup the GitHub repository (creating repo and cloning repo locally) \\
+- Setup the GitHub repository (creating repo and cloning repo locally)
 	create a new repository on GitHub or create a new directory, and initialize it
 	```
 	echo "# projectname" >> README.md or touch README.md
