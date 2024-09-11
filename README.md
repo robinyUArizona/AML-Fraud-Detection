@@ -1,4 +1,26 @@
 # Anti Money Laundering (AML) Fraud Detection
+### Problem Statement
+Money laundering is a multi-billion dollar issue. Detection of laundering is very difficult. Most automated algorithms have a high false positive rate: legitimate transactions incorrectly flagged as laundering. The converse is also a major problem -- false negatives, i.e. undetected laundering transactions. 
+
+### Goal
+To predict the the given transaction is fraud or not.
+
+### Solution Scope
+This can be used in real life by finanicial corporation so that they can improve their AML fraud detection system.
+
+### Solution Approach
+1. Machine Learning: ML Classification Algorithms
+2. Deep Learning: Custom ANN with sigmoid activation Funtion
+
+
+### Project setup
+- Setup the GitHub repository (creating repo and cloning repo locally)
+- Conda/Python environment
+- 
+
+
+
+
 
 ### Workflows
 
