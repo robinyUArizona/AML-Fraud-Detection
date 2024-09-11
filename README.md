@@ -1,4 +1,21 @@
 # Anti Money Laundering (AML) Fraud Detection
+##  Life cycle of Machine Learning Project:
+
+            1. Understanding the Problem Statement
+
+            2. Data Collection
+
+            3. Data Checks to perform
+
+            4. Exploratory Data Analysis
+
+            5. Data Pre-Processing
+
+            6. Model Evaluation and Training
+
+            7. Choose Best Model
+
+
 ### Problem Statement
 Money laundering is a multi-billion dollar issue. Detection of laundering is very difficult. Most automated algorithms have a high false positive rate: legitimate transactions incorrectly flagged as laundering. The converse is also a major problem -- false negatives, i.e. undetected laundering transactions. 
 
@@ -18,6 +35,8 @@ This can be used in real life by finanicial corporation so that they can improve
 3. Fit the ML classification algorithm and find out which one performs better
 4. Select top few and tune hyperparameters
 5. Select the best model based on desired metrics
+
+
 
 
 ### Project setup
@@ -70,6 +89,9 @@ This can be used in real life by finanicial corporation so that they can improve
 	- create project `aml_fraud_detector_mongoDB`
 		- create a cluster `cluster-aml-fraud-detector`
 		- Setup Network Access
+	- Downloaded data from kaggle and insert or upload the data to the MongoDB database (Atlas)
+
+###### Logger and Exceptions setup
 
 
 
@@ -88,55 +110,6 @@ This can be used in real life by finanicial corporation so that they can improve
 
 
 
-### Codebase Workflow
-```AML Fraud Detection
-	- components
-		- data_ingestion.py
-		- data_transformation.py
-		- model_trainer.py
-		- model_evaluation.py
-		- model_pusher.py
-	- configuration
-		- s3_operations.py
-	- constant
-	- entity
-		- artifact_entity.py
-		- config_entity.py
-	- exception
-	- logger
-	- pipeline
-		- train_pipeline.py
-		- prediction_pipeline.py
-	- utils 
-		- main_utils.py
-	- ml
-		- model.py
-```
-
-
-## How to run?
-### STEPS:
-
-Clone the repository
-
-```bash
-https://github.com/entbappy/End-to-end-Text-Summarization
-```
-### STEP 01- Create a conda environment after opening the repository
-
-```bash
-conda create -n summary python=3.8 -y
-```
-
-```bash
-conda activate summary
-```
-
-
-### STEP 02- install the requirements
-```bash
-pip install -r requirements.txt
-```
 
 
 ```bash
