@@ -178,8 +178,8 @@ open up your local host and port
 		3. Launch Your EC2 
 		4. Pull Your image from ECR in EC2
 
-	5. Lauch your docker image in EC2
-		Docker setup in EC2
+	- Lauch your docker image in EC2
+			Docker setup in EC2
 		```bash
 		# optional
 		sudo apt-get update -y
@@ -192,7 +192,7 @@ open up your local host and port
 		newgrp docker
 		```
 
-6. Configure EC2 as self-hosted runner
+6. Configure EC2 as self-hosted runner in GitHub
 	- Now, Go to GitHub 
 ```bash
 	setting > actions > runner > new self hosted runner > choose os (Linux) > then run command one by one
@@ -202,6 +202,7 @@ open up your local host and port
 ```bash
 	setting > Secrets and variables > actions > New repository secret (in main screen)				
 ```
+Add `new repository secret`
 ```
     AWS_ACCESS_KEY_ID=
 
@@ -209,9 +210,9 @@ open up your local host and port
 
     AWS_REGION = us-east-1
 
-    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
+    AWS_ECR_LOGIN_URI = 767397970670.dkr.ecr.us-east-1.amazonaws.com
 
-    ECR_REPOSITORY_NAME = simple-app
+    ECR_REPOSITORY_NAME = aml_fraud_detector-container
 ```
 
 
