@@ -169,7 +169,11 @@ Two web interfaces were developed to interact with the model:
 
 ## Outcome
 
-The project resulted in a robust machine learning model that significantly improved the detection of fraudulent transactions, reducing both false positives and false negatives. The model was successfully deployed and integrated into a CI/CD pipeline, ensuring continuous updates and monitoring. The web interfaces provided easy access to the model’s capabilities, facilitating both API-based and interactive web-based interactions.
+The project resulted in a robust machine learning model that significantly enhanced the detection of fraudulent transactions, effectively reducing both false positives and false negatives. The model was successfully deployed using Docker on AWS, leveraging ECR and EC2 instances, and was integrated into a CI/CD pipeline with GitHub Actions to ensure continuous updates and monitoring.
+
+MLflow was used for experiment tracking, allowing the team to log and compare different model versions and their performance metrics. It provided valuable insights into model evaluation by tracking parameters, metrics, and artifacts, which aided in making informed decisions during model tuning and selection.
+
+The web interfaces enabled users to easily determine whether a transaction is fraudulent or legitimate based on its details. These interfaces were developed using FastAPI for API-based access and Streamlit for an interactive, web-based experience, ensuring they were user-friendly and flexible.
 
 
 
