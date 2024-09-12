@@ -21,6 +21,7 @@ def predict_datapoint():
             account_1 = request.form.get("account_1"),
             amount_received =  request.form.get("amount_received"),
             receiving_currency = request.form.get("receiving_currency"),
+            payment_currency = request.form.get("payment_currency"),
             payment_format = request.form.get("payment_format")
         )
         pred_df = data.get_data_as_DataFrame()

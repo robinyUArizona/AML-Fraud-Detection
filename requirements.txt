@@ -2,6 +2,8 @@ pandas
 numpy
 seaborn
 matplotlib
+statsmodels
+scipy
 ipykernel
 scikit-learn
 xgboost
@@ -13,4 +15,4 @@ lxml
 streamlit
 mlflow==2.16.0
 pymongo[tls,srv]
--e .
+# -e .

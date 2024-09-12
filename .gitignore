@@ -134,7 +134,7 @@ venv.bak/
 # Files and Folders
 **/data/
 **/key_string.py
-# /artifacts
+/artifacts
 
 
 # Spyder project settings

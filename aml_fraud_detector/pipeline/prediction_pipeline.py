@@ -38,7 +38,7 @@ class PredictionPipeline:
         
 
 # ['from_bank', 'to_bank', 'amount_received']
-# ['account', 'account_1', 'receiving_currency', 'payment_format']
+# ['account', 'account_1', 'receiving_currency', 'payment_currency', 'payment_format']
 class CustomData:
     def __init__(self,
             from_bank: int,
@@ -47,6 +47,7 @@ class CustomData:
             account_1: str,
             amount_received: float,
             receiving_currency: str,
+            payment_currency: str,
             payment_format: str):
     
         self.from_bank = from_bank
@@ -55,6 +56,7 @@ class CustomData:
         self.account_1 = account_1
         self.amount_received =  amount_received
         self.receiving_currency = receiving_currency
+        self.payment_currency = payment_currency
         self.payment_format = payment_format
     
     def get_data_as_DataFrame(self):
@@ -66,6 +68,7 @@ class CustomData:
                 "account_1": [self.account_1],
                 "amount_received": [self.amount_received],
                 "receiving_currency": [self.receiving_currency],
+                "payment_currency": [self.payment_currency],
                 "payment_format": [self.payment_format]
             }
             return pd.DataFrame(custom_data_input_dict)

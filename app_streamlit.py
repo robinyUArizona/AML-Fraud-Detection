@@ -29,6 +29,7 @@ def main():
                 account_1 = st.sidebar.text_input("account_1"),
                 amount_received =  st.sidebar.number_input("amount_received"),
                 receiving_currency = st.sidebar.text_input("receiving_currency"),
+                payment_currency = st.sidebar.text_input("payment_currency"),
                 payment_format = st.sidebar.text_input("payment_format")
             )
         features_df = data.get_data_as_DataFrame()

@@ -95,8 +95,10 @@ This can be used in real life by finanicial corporation so that they can improve
 
 
 
-
 ### Workflows
+1. constants
+2. entity
+
 
 1. Update config.yaml
 2. Update secrets.yaml [Optional]
@@ -107,6 +109,7 @@ This can be used in real life by finanicial corporation so that they can improve
 7. Update the pipeline 
 8. Update the main.py
 9. Update the dvc.yaml
+
 
 
 

@@ -64,12 +64,12 @@ class DataTransformation:
 
             # Get Independent features (drop unwanted columns) and Dependent feature
             target_column_name = "is_laundering"
-            drop_columns = [target_column_name, "timestamp", "amount_paid", "payment_currency"]
+            drop_columns = [target_column_name, "timestamp", "amount_paid"]
             input_features_train_df = train_df.drop(columns=drop_columns, axis=1)
-            target_fetaure_train_df = train_df[target_column_name]
+            target_feature_train_df = train_df[target_column_name]
 
             input_features_test_df = test_df.drop(columns=drop_columns, axis=1)
-            target_fetaure_test_df = test_df[target_column_name]
+            target_feature_test_df = test_df[target_column_name]
 
             # Get column names of input features which need to be transformed
             numerical_features = input_features_train_df.select_dtypes(include=np.number).columns.tolist()
@@ -85,8 +85,8 @@ class DataTransformation:
             input_feature_test_arr = preprocessing_obj.transform(input_features_test_df)
             
             # concatenating all input features and target feature along column wise
-            train_arr = np.c_[input_feature_train_arr, np.array(target_fetaure_train_df)]
-            test_arr = np.c_[input_feature_test_arr, np.array(target_fetaure_test_df)]
+            train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
+            test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
 
             save_object(
                 file_path = self.data_transformation_config.preprocessor_obj_file_path,
