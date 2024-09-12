@@ -23,6 +23,7 @@ The problem involves detecting money laundering activities, which are challengin
 
 ### Data Collection
 Data was sourced from Kaggle, providing a comprehensive dataset of transactions labeled as fraudulent (1) or legitimate (0).
+
 Data Source: https://www.kaggle.com/datasets/ealtman2019/ibm-transactions-for-anti-money-laundering-aml/data
 
 ### Data Checks to Perform
@@ -47,28 +48,29 @@ Feature engineering was employed to create new variables that could enhance mode
 
 
 ### Model Building and Evaluation
-Multiple machine learning models were built using classification algorithms, including Random Forest, XGBoost, and Logistic Regression. Hyperparameter tuning was performed using grid search and cross-validation to optimize model performance.
+Multiple machine learning models were built using classification algorithms, including Random Forest, AdaBoost, and XGBoost. Hyperparameter tuning was performed using grid search and cross-validation to optimize model performance.
 
 ### Model Selection
 The best-performing models were selected based on accuracy, precision, recall, and F1-score metrics. The selected model was further tuned and validated on the test dataset.
 
 ### Deployment
 The final model was containerized using Docker and deployed on AWS. The deployment process involved the following steps:
-**Notes**: 
-Finally run the following command to test in local
 
-		```bash
-		python app.py
-		or
-		streamlit run app_streamlit.py
-		```
-		```bash
-		open up you local host and port
-		```
+**Notes**: 
+Finally run the following command to test in local after buling prediction pipeline for web interface using FastAPI or streamlit
+```bash
+python app.py
+or
+streamlit run app_streamlit.py
+```
+```bash
+open up you local host and port
+```
 
 
 		
-##### Docker
+**Docker** Notes
+
 Build an Image from a Dockerfile
 ```bash
 docker build -t aml-streamlit-app .
@@ -113,7 +115,7 @@ open up your local host and port
    - Create EC2 (Ubuntu): Virtual machine in the AWS cloud
    - Launched an EC2 instance (Ubuntu) to run the application.
    - **Connect to EC2 Instance:** Built Docker image, pushed it to ECR, and launched it on EC2.
-		- Description: About the deployment
+		- **Description**: About the deployment
 		1. Build docker image of the source code
 		2. Push  docker image to ECR
 		3. Launch EC2 
@@ -299,3 +301,8 @@ Open-source version control system for Data Science and Machine Learning project
 ```
 
 
+```bash
+Author: Robins Yadav
+Data Scientist
+
+```
