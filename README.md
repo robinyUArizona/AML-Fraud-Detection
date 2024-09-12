@@ -1,39 +1,185 @@
 # Anti Money Laundering (AML) Fraud Detection
-##  Life cycle of Machine Learning Project:
 
-            1. Understanding the Problem Statement
-            2. Data Collection
-            3. Data Checks to perform
-            4. Exploratory Data Analysis
-            5. Data Pre-Processing
-            6. Model Evaluation and Training
-            7. Choose Best Model
-
-
-### Problem Statement
-Money laundering is a multi-billion dollar issue. Detection of laundering is very difficult. Most automated algorithms have a high false positive rate: legitimate transactions incorrectly flagged as laundering. The converse is also a major problem -- false negatives, i.e. undetected laundering transactions. 
-
-### Goal
-To predict the the given transaction is fraud or not.
-
-### Solution Scope
-This can be used in real life by finanicial corporation so that they can improve their AML fraud detection system.
+## Project Overview
+The AML Fraud Detection project aims to build a machine learning system to identify potentially fraudulent transactions. Money laundering is a multi-billion dollar issue. This project is crucial for financial institutions to enhance their Anti-Money Laundering (AML) systems and reduce the occurrence of both false positives (legitimate transactions flagged as fraudulent) and false negatives (fraudulent transactions that go undetected).
 
 ### Solution Approach
-1. Machine Learning: ML Classification Algorithms
-2. Deep Learning: Custom ANN with sigmoid activation Funtion
+Machine Learning: ML Classification Algorithms
 
-### Solution Proposed
-1. Download the data from Kaggle
-2. Perform EDA and feature engineering to select the desirable features
-3. Fit the ML classification algorithm and find out which one performs better
-4. Select top few and tune hyperparameters
-5. Select the best model based on desired metrics
+## Project Lifecycle
+		1. Understanding the Problem Statement
+		2. Data Collection
+		3. Data Checks to perform
+		4. Exploratory Data Analysis (EDA) 
+		5. Data Pre-Processing and Feature Engineering
+		6. Model Evaluation and Training - Fit the ML classification algorithm and find out which one performs better
+		7. Choose Best Model based on desired metrics
+		8. Model deployment with CI/CD pipeline
+		9. Web interactive interface
+		10. Outcomes
+
+### Understanding the Problem Statement
+The problem involves detecting money laundering activities, which are challenging because most automated algorithms have a high false positive rate: legitimate transactions incorrectly flagged as laundering. The converse is also a major problem -- false negatives, i.e. undetected laundering transactions. 
+
+### Data Collection
+Data was sourced from Kaggle, providing a comprehensive dataset of transactions labeled as fraudulent (1) or legitimate (0).
+Data Source: https://www.kaggle.com/datasets/ealtman2019/ibm-transactions-for-anti-money-laundering-aml/data
+
+### Data Checks to Perform
+Initial data validation included checking for missing values, inconsistencies, and anomalies to ensure data integrity.
+
+### Exploratory Data Analysis (EDA)
+In-depth EDA was conducted to understand the distribution of features, detect patterns, and identify correlations between variables. Visualization techniques were employed to uncover hidden insights.
+
+### Data Pre-Processing and Feature Engineering
+Data was cleaned and transformed to prepare it for model training. This included:
+- **Handling Missing Values:** Addressed any gaps in the data to ensure completeness.
+- **Encoding Categorical Variables:** Converted categorical variables into numerical formats, as machine learning models require numerical input.
+- **Normalizing Numerical Features:** Scaled numeric variables to ensure uniformity and improve model performance.
+
+Feature engineering was employed to create new variables that could enhance model performance. This process involved:
+- **Scaling Numeric Variables:** Ensured that numeric features were on a similar scale to prevent any one feature from dominating the model.
+- **Encoding Categorical Variables:** Transformed categorical data into numerical representations, enabling the model to process these features effectively.
+
+#### Multicollinearity Check
+- **Numerical Features:** Variance Inflation Factor (VIF) was calculated to identify multicollinearity among numerical features. Features with high VIF values were considered for removal or transformation.
+- **Categorical Features:** Chi-squared tests were conducted to evaluate the relationship between categorical features and the target variable. The null hypothesis (no association between features) and the alternative hypothesis (association exists) were tested to assess feature importance and avoid redundancy.
+
+
+### Model Building and Evaluation
+Multiple machine learning models were built using classification algorithms, including Random Forest, XGBoost, and Logistic Regression. Hyperparameter tuning was performed using grid search and cross-validation to optimize model performance.
+
+### Model Selection
+The best-performing models were selected based on accuracy, precision, recall, and F1-score metrics. The selected model was further tuned and validated on the test dataset.
+
+### Deployment
+The final model was containerized using Docker and deployed on AWS. The deployment process involved the following steps:
+**Notes**: 
+Finally run the following command to test in local
+
+		```bash
+		python app.py
+		or
+		streamlit run app_streamlit.py
+		```
+		```bash
+		open up you local host and port
+		```
+
+
+		
+##### Docker
+Build an Image from a Dockerfile
+```bash
+docker build -t aml-streamlit-app .
+```
+List local images
+```bash
+docker images
+```
+Delete an image
+```bash
+docker rmi <image_name>
+```
+Remove all unused images
+```bash
+docker image prune
+```
+Run a container with and publish a container’s port(s) to the host.
+```bash
+docker run -p 8501:8501 aml-streamlit-app
+or
+docker run -p 5000:5000 app_name
+```
+```bash
+open up your local host and port
+```
+
+
+1. **CI/CD Setup with GitHub Actions:**
+   - Configured GitHub Actions workflows in the `.github/workflows` directory, the `main.yaml` file, to automate the build, test, and deployment stages.
+
+2. **AWS Console Setup:**
+   - **Login to AWS Console:** Accessed the AWS Management Console to set up required resources.
+   - **IAM User Creation:** Created an IAM user with permissions for deployment:
+     - `AmazonEC2ContainerRegistryFullAccess`: Full access to Amazon Elastic Container Registry (ECR).
+     - `AmazonEC2FullAccess`: Full access to Amazon EC2.
+
+3. **Elastic Container Registry (ECR) Setup:**
+   - Created an ECR repository for storing Docker images.
+   - **ECR Repo URI:** `767397970670.dkr.ecr.us-east-1.amazonaws.com/aml_fraud_detector-container`
+
+4. **EC2 Instance Setup:**
+   - Create EC2 (Ubuntu): Virtual machine in the AWS cloud
+   - Launched an EC2 instance (Ubuntu) to run the application.
+   - **Connect to EC2 Instance:** Built Docker image, pushed it to ECR, and launched it on EC2.
+		- Description: About the deployment
+		1. Build docker image of the source code
+		2. Push  docker image to ECR
+		3. Launch EC2 
+		4. Pull  image from ECR in EC2
+
+	- Lauch docker image in EC2
+		- Docker setup in EC2
+		```bash
+		# optional
+		sudo apt-get update -y
+		sudo apt-get upgrade
+
+		# Required
+		curl -fsSL https://get.docker.com -o get-docker.sh
+		sudo sh get-docker.sh
+		sudo usermod -aG docker ubuntu
+		newgrp docker
+		```
+
+5. Configure EC2 as self-hosted runner in GitHub
+	- Now, Go to GitHub 
+```bash
+	setting > actions > runner > new self hosted runner > choose os (Linux) > then run command one by one
+```
+	
+6. Setup github secrets:
+```bash
+	setting > Secrets and variables > actions > New repository secret (in main screen)	
+
+		AWS_ACCESS_KEY_ID=
+		AWS_SECRET_ACCESS_KEY=
+		AWS_REGION = us-east-1
+		AWS_ECR_LOGIN_URI = 767397970670.dkr.ecr.us-east-1.amazonaws.com
+		ECR_REPOSITORY_NAME = aml_fraud_detector-container			
+```
 
 
 
+## Web Interfaces
+Two web interfaces were developed to interact with the model:
+- **FastAPI:** A high-performance web framework for building APIs with Python, used to create an API endpoint for real-time fraud detection.
+- **Streamlit:** An open-source app framework for machine learning and data science projects, used to build an interactive web application for visualizing results and interacting with the model.
 
-### Project setup
+## Tools and Technologies
+- **Data Processing:** Python, Pandas, NumPy, Scikit-learn
+- **Modeling:** Random Forest, XGBoost, Logistic Regression
+- **Hyperparameter Tuning:** Grid Search, Cross-Validation
+- **Deployment:** Docker, AWS (EC2, ECR), GitHub Actions, MLflow, DVC
+- **Web Interfaces:** FastAPI, Streamlit
+- **Version Control and Experiment Tracking:** GitHub, DVC, MLflow
+
+## Outcome
+
+The project resulted in a robust machine learning model that significantly improved the detection of fraudulent transactions, reducing both false positives and false negatives. The model was successfully deployed and integrated into a CI/CD pipeline, ensuring continuous updates and monitoring. The web interfaces provided easy access to the model’s capabilities, facilitating both API-based and interactive web-based interactions.
+
+
+
+```bash
+Author: Robins Yadav
+Data Scientist
+
+```
+
+
+
+#### Project setup Notes
 - Setup the GitHub repository (creating repo and cloning repo locally)
 	by creating a new repository on GitHub or by creating a new directory, and initialize it
 	```
@@ -113,127 +259,17 @@ This can be used in real life by finanicial corporation so that they can improve
 
 
 
-## Finally run the following command
-
-```bash
-python app.py
-or
-streamlit run app_streamlit.py
-```
-```bash
-open up you local host and port
-```
-
-
-## Deployment
-### Docker
-Build an Image from a Dockerfile
-```bash
-docker build -t aml-streamlit-app .
-```
-List local images
-```bash
-docker images
-```
-Delete an image
-```bash
-docker rmi <image_name>
-```
-Remove all unused images
-```bash
-docker image prune
-```
-Run a container with and publish a container’s port(s) to the host.
-```bash
-docker run -p 8501:8501 aml-streamlit-app
-or
-docker run -p 5000:5000 app_name
-```
-```bash
-open up your local host and port
-```
-
-
-### AWS-CICD-Deployment-with-Github-Actions 
-1. .github\workflows
-	- `main.yaml`
-
-2. Login to AWS console
-
-3. Create IAM: `Identity Access Management` user for deployment
-	- `AmazonEC2ContainerRegistryFullAccess`
-	- `AmazonEC2FullAccess`
-
-4. Create ECR: `Elastic Container registry` to save your docker image in aws
-	- ECR Repo URI: 767397970670.dkr.ecr.us-east-1.amazonaws.com/aml_fraud_detector-container
-
-5. Create EC2 (Ubuntu): Virtual machine in the AWS cloud
-	- **connect** to EC2 instance
-		- Description: About the deployment
-		1. Build docker image of the source code
-		2. Push  docker image to ECR
-		3. Launch EC2 
-		4. Pull  image from ECR in EC2
-
-	- Lauch your docker image in EC2
-		- Docker setup in EC2
-		```bash
-		# optional
-		sudo apt-get update -y
-		sudo apt-get upgrade
-
-		# Required
-		curl -fsSL https://get.docker.com -o get-docker.sh
-		sudo sh get-docker.sh
-		sudo usermod -aG docker ubuntu
-		newgrp docker
-		```
-
-6. Configure EC2 as self-hosted runner in GitHub
-	- Now, Go to GitHub 
-```bash
-	setting > actions > runner > new self hosted runner > choose os (Linux) > then run command one by one
-```
-	
-7. Setup github secrets:
-```bash
-	setting > Secrets and variables > actions > New repository secret (in main screen)	
-
-		AWS_ACCESS_KEY_ID=
-		AWS_SECRET_ACCESS_KEY=
-		AWS_REGION = us-east-1
-		AWS_ECR_LOGIN_URI = 767397970670.dkr.ecr.us-east-1.amazonaws.com
-		ECR_REPOSITORY_NAME = aml_fraud_detector-container			
-```
-
-
-
-	
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-### MLflow
+######## MLflow
 
 - [Documentation](https://mlflow.org/docs/latest/index.html)
 
 - [MLflow tutorial](https://youtube.com/playlist?list=PLkz_y24mlSJZrqiZ4_cLUiP0CBN5wFmTb&si=zEp_C8zLHt1DzWKK)
-
-##### cmd
+```bash
 - mlflow ui
+```
 
-### DagsHub
+
+##### DagsHub
 [DagsHub](https://dagshub.com/)
 
 MLFLOW_TRACKING_URI=https://dagshub.com/robinyUArizona/DL-EndToEnd-Project.mlflow \
@@ -244,29 +280,22 @@ python script.py
 Run this to export as env variables:
 
 ```bash
-
 export MLFLOW_TRACKING_URI=https://dagshub.com/robinyUArizona/DL-EndToEnd-Project.mlflow
 
 export MLFLOW_TRACKING_USERNAME=robinyUArizona 
 
 export MLFLOW_TRACKING_PASSWORD=292f6d1bdcfe7ac283b512eb8f2fccfce1733a51
-
 ```
 
 
 
-### DVC 
+##### DVC 
 [DVC](https://dvc.org/)
 Open-source version control system for Data Science and Machine Learning projects. Git-like experience to organize your data, models, and experiments.
+```bash
 1. dvc init
 2. dvc repro
 3. dvc dag
-
-
-
-
-```bash
-Author: Robins Yadav
-Data Scientist
-
 ```
+
+
