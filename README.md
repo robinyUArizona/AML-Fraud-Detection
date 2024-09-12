@@ -264,19 +264,15 @@ Data Scientist
 
 
 
-
-######## MLflow
-
+##### MLflow
 - [Documentation](https://mlflow.org/docs/latest/index.html)
-
-- [MLflow tutorial](https://youtube.com/playlist?list=PLkz_y24mlSJZrqiZ4_cLUiP0CBN5wFmTb&si=zEp_C8zLHt1DzWKK)
 ```bash
 - mlflow ui
 ```
 
-
 ##### DagsHub
 [DagsHub](https://dagshub.com/)
+MLflow is used for tracking experiments, logging metrics, parameters, and artifacts. Integrating DagsHub with MLflow allows you to track machine learning experiments and their associated data and models in one place.
 
 MLFLOW_TRACKING_URI=https://dagshub.com/robinyUArizona/DL-EndToEnd-Project.mlflow \
 MLFLOW_TRACKING_USERNAME=robinyUArizona \
@@ -292,8 +288,6 @@ export MLFLOW_TRACKING_USERNAME=robinyUArizona
 
 export MLFLOW_TRACKING_PASSWORD=292f6d1bdcfe7ac283b512eb8f2fccfce1733a51
 ```
-
-
 
 ##### DVC 
 [DVC](https://dvc.org/)
