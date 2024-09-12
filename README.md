@@ -194,16 +194,15 @@ open up your local host and port
 	
 7. Setup github secrets:
 ```bash
-	setting > Secrets and variables > actions > New repository secret (in main screen)				
-```
-	- Add `new repository secret`
-	```
+	setting > Secrets and variables > actions > New repository secret (in main screen)	
+
 		AWS_ACCESS_KEY_ID=
 		AWS_SECRET_ACCESS_KEY=
 		AWS_REGION = us-east-1
 		AWS_ECR_LOGIN_URI = 767397970670.dkr.ecr.us-east-1.amazonaws.com
-		ECR_REPOSITORY_NAME = aml_fraud_detector-container
-	```
+		ECR_REPOSITORY_NAME = aml_fraud_detector-container			
+```
+
 
 
 	
