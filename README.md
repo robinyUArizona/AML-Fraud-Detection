@@ -54,7 +54,7 @@ Multiple machine learning models were built using classification algorithms: Ran
 The previous trained models with best hyperparamters were evaluated based on accuracy, precision, recall, and F1-score metrics. For this project, `Recall` (True positive Rate), was chosen as the final evaluation metric since minimizing `false negatives` is crucial for detecting fraudulent transactions. The best model was selected based on its recall performance.
 
 ### Deployment
-The final model was containerized using Docker and deployed on AWS using GitHub CI/CD pipeline. The deployment process involved the following steps:
+The final model was containerized using Docker and deployed on AWS. Continuous Integration/Continuous Deployment (CI/CD) pipelines were set up using GitHub Actions and AWS services. The deployment process involved the following steps:
 
 **Notes**: 
 Finally run the following command to test in local after buling prediction pipeline for web interface using FastAPI or streamlit
