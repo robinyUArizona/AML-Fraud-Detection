@@ -73,9 +73,14 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, params):
             model = list(models.values())[i]
             param = params[list(models.keys())[i]]
 
+            # Initialize StratifiedKFold with 5 folds
+            # Stratified K-Fold ensures that each fold has the same proportion of classes as the entire dataset. 
+            skf = StratifiedKFold(n_splits=3)
+
             # Grid Search
             logging.info(f"Grid Search started for {model}")
-            gs = GridSearchCV(model, param, cv=3)
+            # 
+            gs = GridSearchCV(model, param, cv=skf, n_jobs=-1)
             gs.fit(X_train, y_train)
             logging.info(f"Grid Search completed for {model}")
 
@@ -90,6 +95,7 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, params):
             y_test_pred = model.predict(X_test)
 
             # Get evaluation metrics for train and test data
+            logging.info(f"Obtaining evaluation metrics for {model} by using best hyperparameters")
             precision_train, recall_train, f1_train, cm_train = model_metrics(y_train, y_train_pred)
             train_model_score = []
             train_model_score.append({
@@ -99,7 +105,7 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, params):
                 "Confusion Matrix": cm_train
             })
             train_report[list(models.keys())[i]] = train_model_score
-
+            
             precision_test, recall_test, f1_test, cm_test = model_metrics(y_test, y_test_pred)
             test_model_score = []
             test_model_score.append({

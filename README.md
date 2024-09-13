@@ -1,7 +1,7 @@
 # Anti Money Laundering (AML) Fraud Detection
 
 ## Project Overview
-The AML Fraud Detection project aims to build a machine learning system to identify potentially fraudulent transactions. Money laundering is a multi-billion dollar issue. This project is crucial for financial institutions to enhance their Anti-Money Laundering (AML) systems and reduce the occurrence of both false positives (legitimate transactions flagged as fraudulent) and false negatives (fraudulent transactions that go undetected).
+The AML Fraud Detection project aims to build a machine learning system to identify potentially fraudulent transactions. Money laundering is a multi-billion dollar issue. This project is crucial for financial institutions to enhance their Anti-Money Laundering (AML) systems because most automated algorithms have a high false positive rate: legitimate transactions incorrectly flagged as laundering. The converse is also a major problem -- false negatives, i.e. undetected laundering transactions.
 
 ### Solution Approach
 Machine Learning: ML Classification Algorithms
@@ -12,7 +12,7 @@ Machine Learning: ML Classification Algorithms
 		3. Data Checks to perform
 		4. Exploratory Data Analysis (EDA) 
 		5. Data Pre-Processing and Feature Engineering
-		6. Model Evaluation and Training - Fit the ML classification algorithm and find out which one performs better
+		6. Models cross-validation, tunning and training 
 		7. Choose Best Model based on desired metrics
 		8. Model deployment with CI/CD pipeline
 		9. Web interactive interface
@@ -47,14 +47,14 @@ Feature engineering was employed to create new variables that could enhance mode
 - **Categorical Features:** Chi-squared tests were conducted to evaluate the relationship between categorical features and the target variable. The null hypothesis (no association between features) and the alternative hypothesis (association exists) were tested to assess feature importance and avoid redundancy.
 
 
-### Model Building and Evaluation
-Multiple machine learning models were built using classification algorithms, including Random Forest, AdaBoost, and XGBoost. Hyperparameter tuning was performed using grid search and cross-validation to optimize model performance.
+### Models Cross-Validation, Tunning and Training
+Multiple machine learning models were built using classification algorithms: Random Forest, AdaBoost, and XGBoost. These models were cross-validated (`StratifiedKFold`) amd  hyperparameter tuned using `GridSearchCV`, and then trained using training dataset to find the best hyperparemeters for each model.  Now, each model was then configured with the best hyperparameters and finally trained using the training dataset. The trained models were then used to make predictions on both the training and test data.
 
-### Model Selection
-The best-performing models were selected based on accuracy, precision, recall, and F1-score metrics. The selected model was further tuned and validated on the test dataset.
+### Model Selection - choosing best model
+The previous trained models with best hyperparamters were evaluated based on accuracy, precision, recall, and F1-score metrics. For this project, `Recall` (True positive Rate), was chosen as the final evaluation metric since minimizing `false negatives` is crucial for detecting fraudulent transactions. The best model was selected based on its recall performance.
 
 ### Deployment
-The final model was containerized using Docker and deployed on AWS. The deployment process involved the following steps:
+The final model was containerized using Docker and deployed on AWS using GitHub CI/CD pipeline. The deployment process involved the following steps:
 
 **Notes**: 
 Finally run the following command to test in local after buling prediction pipeline for web interface using FastAPI or streamlit
