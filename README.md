@@ -1,7 +1,7 @@
 # Anti Money Laundering (AML) Fraud Detection
 
 ## Project Overview
-The AML Fraud Detection project aims to build a machine learning system to identify potentially fraudulent transactions. Money laundering is a multi-billion dollar issue. This project is crucial for financial institutions to enhance their Anti-Money Laundering (AML) systems because most automated algorithms have a high false positive rate: legitimate transactions incorrectly flagged as laundering. The converse is also a major problem -- false negatives, i.e. undetected laundering transactions.
+The AML Fraud Detection project focuses on developing a machine learning system to identify potentially fraudulent transactions, addressing the critical challenge of money laundering, a multi-billion dollar problem. This project is essential for financial institutions aiming to improve their Anti-Money Laundering (AML) systems. Traditional automated algorithms have a high false positive rate: legitimate transactions incorrectly flagged as laundering. The converse is also a major problem -- false negatives, i.e. undetected laundering transactions. The project seeks to reduce both of these issues, enhancing the accuracy and effectiveness of AML systems.
 
 ### Solution Approach
 Machine Learning: ML Classification Algorithms
