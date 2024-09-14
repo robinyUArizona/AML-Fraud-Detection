@@ -19,21 +19,21 @@ Machine Learning: ML Classification Algorithms
 		9. Web interactive interface
 		10. Outcomes
 
-### Understanding the Problem Statement
+### 1. Understanding the Problem Statement
 The problem involves detecting money laundering activities, which are challenging because most automated algorithms have a high false positive rate: legitimate transactions incorrectly flagged as laundering. The converse is also a major problem -- false negatives, i.e. undetected laundering transactions. 
 
-### Data Collection
+### 2. Data Collection
 Data was sourced from Kaggle, providing a comprehensive dataset of transactions labeled as fraudulent (1) or legitimate (0).
 
 Data Source: https://www.kaggle.com/datasets/ealtman2019/ibm-transactions-for-anti-money-laundering-aml/data
 
-### Data Checks to Perform
+### 3. Data Checks to Perform
 Initial data validation included checking for missing values, inconsistencies, and anomalies to ensure data integrity.
 
-### Exploratory Data Analysis (EDA)
+### 4. Exploratory Data Analysis (EDA)
 In-depth EDA was conducted to understand the distribution of features, detect patterns, and identify correlations between variables. Visualization techniques were employed to uncover hidden insights.
 
-### Data Pre-Processing and Feature Engineering
+### 5. Data Pre-Processing and Feature Engineering
 Data was cleaned and transformed to prepare it for model training. This included:
 - **Handling Missing Values:** Addressed any gaps in the data to ensure completeness.
 - **Encoding Categorical Variables:** Converted categorical variables into numerical formats, as machine learning models require numerical input.
@@ -48,13 +48,13 @@ Feature engineering was employed to create new variables that could enhance mode
 - **Categorical Features:** Chi-squared tests were conducted to evaluate the relationship between categorical features and the target variable. The null hypothesis (no association between features) and the alternative hypothesis (association exists) were tested to assess feature importance and avoid redundancy.
 
 
-### Models Cross-Validation, Tunning and Training
+### 6. Models Cross-Validation, Tunning and Training
 Multiple machine learning models were built using classification algorithms: Random Forest, AdaBoost, and XGBoost. These models were cross-validated (`StratifiedKFold`) amd  hyperparameter tuned using `GridSearchCV`, and then trained using training dataset to find the best hyperparemeters for each model.  Now, each model was then configured with the best hyperparameters and finally trained using the training dataset. The trained models were then used to make predictions on both the training and test data.
 
-### Model Selection - choosing best model
+### 7. Model Selection - choosing best model
 The previous trained models with best hyperparamters were evaluated based on accuracy, precision, recall, and F1-score metrics. For this project, `Recall` (True positive Rate), was chosen as the final evaluation metric since minimizing `false negatives` is crucial for detecting fraudulent transactions. The best model was selected based on its recall performance.
 
-### Deployment
+### 8. Deployment
 The final model was containerized using Docker and deployed on AWS. Continuous Integration/Continuous Deployment (CI/CD) pipelines were set up using GitHub Actions and AWS services. The deployment process involved the following steps:
 
 **Notes**: 
@@ -222,16 +222,24 @@ Data Scientist
 	
 	```
 - Requirements
-	```bash
-	conda create -p venv python=3.8 -y
-	```
-	```bash
-	conda activate venv
-	```
-	```bash
-	pip install -r requirements.txt
-	Note: -e . at the end in requirements.txt file -> This is for `setup.py` file
-	```
+```bash
+conda create -p venv python=3.8 -y
+```
+```bash
+conda activate venv
+```
+```bash
+pip install -r requirements.txt
+Note: -e . at the end in requirements.txt file -> This is for `setup.py` file
+```
+```bash
+python app.py
+or
+streamlit run app_streamlit.py
+```
+```bash
+open up you local host and port
+```
 - Database setup - MongoDB
 	- create project `aml_fraud_detector_mongoDB`
 		- create a cluster `cluster-aml-fraud-detector`
