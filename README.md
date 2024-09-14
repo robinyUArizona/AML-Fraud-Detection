@@ -121,8 +121,8 @@ open up your local host and port
 		2. Push  docker image to ECR
 		3. Launch EC2 
 		4. Pull  image from ECR in EC2
+		5. Launch docker image in EC2
 
-	- Lauch docker image in EC2
 		- Docker setup in EC2
 		```bash
 		# optional
