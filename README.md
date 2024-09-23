@@ -167,9 +167,9 @@ Two web interfaces were developed to interact with the model:
 
 ## Tools and Technologies
 - **Data Processing:** Python, Pandas, NumPy, Scikit-learn
-- **Modeling:** Random Forest, XGBoost, Logistic Regression
+- **Modeling:** Random Forest, XGBoost, AdaBoost
 - **Hyperparameter Tuning:** Grid Search, Cross-Validation
-- **Deployment:** Docker, AWS (EC2, ECR), GitHub Actions, MLflow, DVC
+- **Deployment:** Docker, AWS (EC2, ECR), GitHub Actions
 - **Web Interfaces:** FastAPI, Streamlit
 - **Version Control and Experiment Tracking:** GitHub, DVC, MLflow
 
