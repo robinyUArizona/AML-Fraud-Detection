@@ -1,7 +1,7 @@
 # Anti Money Laundering (AML) Fraud Detection
 **Executive Summary**
 
-The “Anti-Money Laundering Fraud Detection” project was worked on to detect fraudulent transactions. Classification ML algorithms like Random Forest, AdaBoost and XGBoost were employed in this project. The machine learning models were trained using preprocessed data and evaluated with cross-validation to optimize the bias-variance trade-off. The models' hyperparameters were tuned using GridSearch and RandomSearch. Predictions were made using these models on both training and unseen (test) data, with the best-performing model selected based on precision metrics.
+The "Anti-Money Laundering Fraud Detection" project aimed to detect fraudulent transactions using classification machine learning algorithms, including Random Forest, AdaBoost, and XGBoost. These machine learning models were trained using preprocessed data and evaluated with cross-validation technique to optimize the bias-variance trade-off. The models' hyperparameters were tuned using GridSearch and RandomSearch. Predictions were made using these models on both training and unseen (test) data, with the best-performing model selected based on precision metrics.
 
 The best model was deployed on AWS using Docker, with ECR (Elastic Container Registry) utilized for containerization and an EC2 instance used for cloud deployment. The trained model was integrated into a CI/CD pipeline via GitHub Actions for continuous updates and real-time monitoring. MLflow was utilized for experiment tracking and performance comparison. Additionally, an interactive web interface was developed using Streamlit, enabling user-friendly interaction with the model and its visualizations.
 
