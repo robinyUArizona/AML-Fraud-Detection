@@ -134,7 +134,7 @@ venv.bak/
 # Files and Folders
 **/data/
 **/key_string.py
-notebooks/2_modelling_training_tunning_AML_Fraud_Detection.ipynb.ipynb
+notebook/2_modelling_training_tunning_AML_Fraud_Detection.ipynb.ipynb
 
 # artifacts/
 
