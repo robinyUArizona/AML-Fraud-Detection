@@ -4,6 +4,7 @@ seaborn
 matplotlib
 statsmodels
 scipy
+category_encoders
 ipykernel
 scikit-learn
 xgboost
@@ -15,4 +16,4 @@ lxml
 streamlit
 mlflow==2.16.0
 pymongo[tls,srv]
-# -e .
+-e .

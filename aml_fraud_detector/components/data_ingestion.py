@@ -22,7 +22,19 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info(f"Entered the 'data ingestion' method or component")
         try:
-            df = pd.read_csv("notebook\data\HI-Small_Trans.csv")
+            # Construct the path dynamically
+            csv_file = os.path.join(
+                "/Users/robins/Desktop/Robins World/Data Science - Machine Learning Prep/01 - MLOps/AML-Fraud-Detection/notebook/data","HI-Small_Trans.csv"
+            )
+            logging.info(f"CSV File Path:, {csv_file}")
+
+            # Check if the file exists
+            if os.path.exists(csv_file):
+                logging.info(f"File found: {csv_file}")
+            else:
+                logging.info(f"Error: File not found at {csv_file}")
+
+            df = pd.read_csv(csv_file)
             # Take 50,000 sampples of the data
             df_sample = df.sample(n=50000, random_state=6)
             logging.info(f"Read the dataset as DataFrame")

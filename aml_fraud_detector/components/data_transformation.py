@@ -4,10 +4,12 @@ from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import RobustScaler, OrdinalEncoder
+
 from sklearn.pipeline import make_pipeline
 from sklearn.compose import make_column_transformer
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import RobustScaler, OneHotEncoder, OrdinalEncoder
+from category_encoders import TargetEncoder, CountEncoder
 
 from aml_fraud_detector.exception import CustomerException
 from aml_fraud_detector.logger import logging
@@ -28,19 +30,32 @@ class DataTransformation:
         """
         This function is responsible for data transformation
         """
-        try:
+        try:          
             # Preprocessing for numerical features:
-            num_transformer = make_pipeline(SimpleImputer(strategy='median'),
-                                            RobustScaler())
-
+            num_transformer = make_pipeline(
+                SimpleImputer(strategy='median'),  # Impute missing values with median
+                RobustScaler()  # Scale numerical features
+            )
+            
             # Preprocessing for categorical features:
-            cat_transformer = make_pipeline(SimpleImputer(strategy='most_frequent'),
-                                            OrdinalEncoder(handle_unknown='use_encoded_value', unknown_value=-1))
+            # Frequency Encoding for high cardinality features
+            freq_encoder = CountEncoder(normalize=True) 
+            # One-Hot Encoding for low cardinality features
+            one_hot_encoder = OneHotEncoder(handle_unknown='ignore')
 
-            ## Transforming both numerical and catergorical columns based preprocessing above
-            preprocessor = make_column_transformer((num_transformer, numerical_columns),
-                                                         (cat_transformer, categorical_columns),
-                                                         remainder="passthrough")
+            # Apply different encodings to different categorical features
+            cat_transformer = make_column_transformer(
+                (freq_encoder, ['account', 'account_1']),  # Frequency Encoding for account and account_1
+                (one_hot_encoder, ['receiving_currency', 'payment_currency', 'payment_format', 'day']),  # One-Hot Encoding for others
+                remainder="drop"  # Drop columns not explicitly transformed
+            )
+
+            preprocessor = make_column_transformer(
+                (num_transformer, numerical_columns),  # Apply numerical transformer to numerical features
+                (cat_transformer, categorical_columns),  # Apply categorical transformer to categorical features
+                remainder="drop"  # Drop columns not explicitly transformed
+            )
+
             logging.info(f"Preprocessed both numerical and categorical columns")
 
             return preprocessor
@@ -50,6 +65,7 @@ class DataTransformation:
 
 
     def initiate_data_transformation(self, train_path, test_path):
+        logging.info(f"\nEntered the 'data transformation' method or component")
         try:
             train_df = pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
@@ -62,9 +78,21 @@ class DataTransformation:
             logging.info(f"Train Dataframe Head : \n{train_df.head().to_string()}")
             logging.info(f"Test Dataframe Head : \n{test_df.head().to_string()}")
 
+            # Convert the "Timestamp" column to datetime format
+            train_df["timestamp"] = pd.to_datetime(train_df["timestamp"])
+            test_df["timestamp"] = pd.to_datetime(test_df["timestamp"])
+
+            # Extract date, day, and time from the Timestamp
+            train_df["date"] = train_df["timestamp"].dt.date
+            train_df["day"] = train_df["timestamp"].dt.day_name()
+            train_df["time"] = train_df["timestamp"].dt.time
+            test_df["date"] = test_df["timestamp"].dt.date
+            test_df["day"] = test_df["timestamp"].dt.day_name()
+            test_df["time"] = test_df["timestamp"].dt.time
+
             # Get Independent features (drop unwanted columns) and Dependent feature
-            target_column_name = "is_laundering"
-            drop_columns = [target_column_name, "timestamp", "amount_paid"]
+            target_column_name = "is_laundering"        
+            drop_columns = [target_column_name, "timestamp", "date", "time", "amount_paid"]
             input_features_train_df = train_df.drop(columns=drop_columns, axis=1)
             target_feature_train_df = train_df[target_column_name]
 
@@ -82,7 +110,9 @@ class DataTransformation:
 
             logging.info(f"Applying preprocessing object on training and testing datasets.")
             input_feature_train_arr = preprocessing_obj.fit_transform(input_features_train_df)
+            input_feature_train_arr = input_feature_train_arr.toarray()  # Convert to dense array
             input_feature_test_arr = preprocessing_obj.transform(input_features_test_df)
+            input_feature_test_arr = input_feature_test_arr.toarray()    # Convert to dense array
             
             # concatenating all input features and target feature along column wise
             train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]

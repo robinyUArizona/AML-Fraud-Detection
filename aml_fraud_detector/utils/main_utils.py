@@ -53,13 +53,13 @@ def upsampling_train_data(X, y):
         raise CustomerException(e, sys)
 
 
-def model_metrics(y_test, y_pred):
+def model_metrics(y_pred, y_test):
     try:     
-        precision = precision_score(y_test, y_pred, average='weighted')
-        recall = recall_score(y_test, y_pred, average='weighted')
-        f1 = f1_score(y_test, y_pred, average='weighted')
+        precision = precision_score(y_pred, y_test, average='weighted')
+        recall = recall_score(y_pred, y_test, average='weighted')
+        f1 = f1_score(y_pred, y_test, average='weighted')
         # Compute confusion matrix
-        cm = confusion_matrix(y_test, y_pred) 
+        cm = confusion_matrix(y_pred, y_test) 
         return precision, recall, f1, cm
     except Exception as e:
         logging.info(f"Exception occured during metrics calculation")
@@ -96,7 +96,7 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, params):
 
             # Get evaluation metrics for train and test data
             logging.info(f"Obtaining evaluation metrics for {model} by using best hyperparameters")
-            precision_train, recall_train, f1_train, cm_train = model_metrics(y_train, y_train_pred)
+            precision_train, recall_train, f1_train, cm_train = model_metrics(y_train_pred, y_train)
             train_model_score = []
             train_model_score.append({
                 "Precision" : precision_train,
@@ -106,7 +106,7 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, params):
             })
             train_report[list(models.keys())[i]] = train_model_score
             
-            precision_test, recall_test, f1_test, cm_test = model_metrics(y_test, y_test_pred)
+            precision_test, recall_test, f1_test, cm_test = model_metrics(y_test_pred, y_test)
             test_model_score = []
             test_model_score.append({
                 "Precision" : precision_test,
@@ -117,6 +117,7 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, params):
             test_report[list(models.keys())[i]] = test_model_score
 
         logging.info(f"\n Metrics calculation on Train Data: \n{train_report}")
+        
         logging.info(f"\n Metrics calculation on Test Data: \n{test_report}")
         return train_report, test_report
 

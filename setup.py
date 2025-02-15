@@ -20,7 +20,8 @@ setup(
     version="0.0.0",
     author="Robins",
     author_email="robiny@arizona.edu",
-    packages=find_packages()
-    # install_requires=get_requirements("requirements.txt")
+    packages=find_packages(), # It looks for __init__.py files in subdirectories to identify valid Python packages.
+                             # and Automatically detects and includes all Python packages in the project directory. 
+    install_requires=get_requirements("requirements.txt")
 
 )

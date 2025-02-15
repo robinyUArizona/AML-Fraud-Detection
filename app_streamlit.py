@@ -30,7 +30,8 @@ def main():
                 amount_received =  st.sidebar.number_input("amount_received"),
                 receiving_currency = st.sidebar.text_input("receiving_currency"),
                 payment_currency = st.sidebar.text_input("payment_currency"),
-                payment_format = st.sidebar.text_input("payment_format")
+                payment_format = st.sidebar.text_input("payment_format"),
+                day = st.sidebar.text_input("day")
             )
         features_df = data.get_data_as_DataFrame()
         # print(features_df)

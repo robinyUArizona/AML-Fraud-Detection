@@ -103,7 +103,7 @@ class ModelTrainer:
             # Prediction on Test data
             predicted = best_model.predict(X_test)
             from sklearn.metrics import precision_score, recall_score, f1_score
-            recall_Score = recall_score(y_test, predicted, average='weighted')
+            recall_Score = recall_score(predicted, y_test, average='weighted')
 
             logging.info(f"Model Training completed")
             logging.info(f"Final Recall score for the {best_model}: {recall_Score}")
