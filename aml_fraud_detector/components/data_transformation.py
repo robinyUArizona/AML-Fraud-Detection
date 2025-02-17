@@ -46,7 +46,7 @@ class DataTransformation:
             # Apply different encodings to different categorical features
             cat_transformer = make_column_transformer(
                 (freq_encoder, ['account', 'account_1']),  # Frequency Encoding for account and account_1
-                (one_hot_encoder, ['receiving_currency', 'payment_currency', 'payment_format', 'day']),  # One-Hot Encoding for others
+                (one_hot_encoder, ['payment_format', 'day']),  # One-Hot Encoding for others
                 remainder="drop"  # Drop columns not explicitly transformed
             )
 
@@ -78,7 +78,14 @@ class DataTransformation:
             logging.info(f"Train Dataframe Head : \n{train_df.head().to_string()}")
             logging.info(f"Test Dataframe Head : \n{test_df.head().to_string()}")
 
-            # Convert the "Timestamp" column to datetime format
+
+            # Convert the "from_bank" and "to_bank" column data type from int (numeric) data type to object (category) data type
+            train_df["from_bank"] = train_df["from_bank"].astype("object")
+            train_df["to_bank"] = train_df["to_bank"].astype("object")
+            test_df["from_bank"] = test_df["from_bank"].astype("object")
+            test_df["to_bank"] = test_df["to_bank"].astype("object")
+
+            # Convert the "timestamp" column to datetime format
             train_df["timestamp"] = pd.to_datetime(train_df["timestamp"])
             test_df["timestamp"] = pd.to_datetime(test_df["timestamp"])
 
@@ -92,7 +99,7 @@ class DataTransformation:
 
             # Get Independent features (drop unwanted columns) and Dependent feature
             target_column_name = "is_laundering"        
-            drop_columns = [target_column_name, "timestamp", "date", "time", "amount_paid"]
+            drop_columns = [target_column_name, "timestamp", "date", "time", "amount_paid", "receiving_currency", "payment_currency", "from_bank", "to_bank"]
             input_features_train_df = train_df.drop(columns=drop_columns, axis=1)
             target_feature_train_df = train_df[target_column_name]
 

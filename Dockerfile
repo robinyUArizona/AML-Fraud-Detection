@@ -1,5 +1,5 @@
 # Use the official python image from the Docker Hub 
-FROM python:3.8-slim-buster
+FROM python:3.12-slim-bookworm
 # Set the working directory
 WORKDIR /app
 # Copy the current directory contents into the container at /app
